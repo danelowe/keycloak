@@ -27,6 +27,7 @@ import org.keycloak.models.RealmModel;
 import org.keycloak.protocol.oidc.OIDCWellKnownProviderFactory;
 import org.keycloak.protocol.oidc.representations.OIDCConfigurationRepresentation;
 import org.keycloak.services.resources.RealmsResource;
+import org.keycloak.urls.UrlType;
 import org.keycloak.wellknown.WellKnownProvider;
 
 /**
@@ -53,7 +54,7 @@ public class UmaConfiguration extends OIDCConfigurationRepresentation {
         configuration.setIntrospectionEndpoint(oidcConfig.getIntrospectionEndpoint());
         configuration.setLogoutEndpoint(oidcConfig.getLogoutEndpoint());
 
-        UriBuilder uriBuilder = session.getContext().getUri().getBaseUriBuilder();
+        UriBuilder uriBuilder = session.getContext().getUri(UrlType.BACKEND).getBaseUriBuilder();
 
         RealmModel realm = session.getContext().getRealm();
 
